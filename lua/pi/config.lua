@@ -5,7 +5,7 @@ local defaults = {
   command = "pi",
   -- snacks terminal argument
   terminal = {
-    interative = true,
+    interactive = true,
     win = {
       position = "right",
       width = 0.30,
