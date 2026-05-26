@@ -1,0 +1,47 @@
+*pi.nvim*  Neovim plugin for Pi Agent
+
+==============================================================================
+1. Intro
+
+Minimal plugin integrating Pi Agent as an interactive terminal powered by snacks.nvim.
+
+Requirements: Neovim >= 0.10, snacks.nvim, and the `pi` CLI command.
+
+==============================================================================
+2. Setup                                       *pi.nvim-setup*
+
+>lua
+require("pi").setup({
+  command = "pi",
+  focus_on_sel = true,
+})
+<
+
+Options: ~
+  command       - Pi CLI command (default: "pi")
+  focus_on_sel  - Focus terminal after sending selection (default: true)
+  terminal      - snacks terminal options (see |snacks-terminal|)
+
+terminal options: ~
+  .interactive  - Enable interactive mode (default: true)
+  .win.position - Docked position: "right" (default), "left", "top", "bottom"
+  .win.width    - Width as fraction of editor (default: 0.30)
+  .win.height   - Height as fraction of editor (default: 0)
+  .win.relative - Coordinate system: "editor" (default), "win", "cursor"
+
+==============================================================================
+3. Commands                                    *pi.nvim-commands*
+
+:PiOpen                                        *:PiOpen*
+        Open Pi Agent in terminal.
+
+:PiSendSel                                     *:PiSendSel*
+        Send visual selection to Pi Agent (visual mode only).
+
+==============================================================================
+4. Keys                                        *pi.nvim-keys*
+
+<leader>ap     Open Pi Agent (normal mode)
+<leader>ap     Send selection to Pi Agent (visual mode)
+
+ vim:ft=help
