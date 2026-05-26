@@ -29,7 +29,7 @@ A minimal Neovim plugin that integrates [Pi Agent](https://github.com/hchosen/pi
 ```
 
 #### Tmux Users (Optional)
-You can use [`nvim-tmux-navigation`](https://github.com/alexghergh/nvim-tmux-navigation) and set the following bindings to easily navigate between terminal.
+You can use [`nvim-tmux-navigation`](https://github.com/alexghergh/nvim-tmux-navigation) and set the following bindings to easily navigate between terminal and editor.
 
 ```lua
 return {
