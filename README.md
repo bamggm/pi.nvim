@@ -95,6 +95,12 @@ require("pi").setup({
 3. The selection is sent with file context
 4. Interact with Pi Agent in the terminal
 
+## FAQ
+
+- `pi` is an external process to Neovim so editor buffer is not refreshed and can conflict
+if you have unmodified changes. You can use `:e!` (`:help edit!`) to reopen the file
+_discarding_ any unmodified changes.
+
 ## License
 
 MIT License - see LICENSE file for details.
