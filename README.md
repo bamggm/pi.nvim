@@ -7,6 +7,10 @@ A minimal Neovim plugin that integrates [Pi Agent](https://github.com/hchosen/pi
 - **Interactive Terminal** - Open Pi Agent directly in Neovim
 - **Send Visual Selections** - Select code in visual mode and send it to Pi Agent with file context (e.g., `@lua/pi/init.lua#L1-15`)
 
+## Demo
+
+https://github.com/user-attachments/assets/f499f960-6188-413b-a57f-0271b75556d5
+
 ## Requirements
 
 - Neovim >= 0.10 (required by snacks.nvim)
