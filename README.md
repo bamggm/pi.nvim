@@ -28,14 +28,27 @@ A minimal Neovim plugin that integrates [Pi Agent](https://github.com/hchosen/pi
 }
 ```
 
-### packer.nvim
+#### Tmux Users (Optional)
+You can use [`nvim-tmux-navigation`](https://github.com/alexghergh/nvim-tmux-navigation) and set the following bindings to easily navigate between terminal.
 
 ```lua
-use({ "hchosen/pi.nvim", requires = { "folke/snacks.nvim" } })
+return {
+  "alexghergh/nvim-tmux-navigation",
+  lazy = false,
+  config = function()
+    -- terminal
+    vim.keymap.set("t", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+    vim.keymap.set("t", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+    vim.keymap.set("t", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+    vim.keymap.set("t", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
 
--- Key bindings
-vim.keymap.set("n", "<leader>ap", "<cmd>PiOpen<CR>", { desc = "Open Pi Agent" })
-vim.keymap.set("v", "<leader>ap", "<cmd>PiSendSel<CR>", { desc = "Send to Pi Agent" })
+    -- tmux
+    vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+    vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+    vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+    vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+  end,
+}
 ```
 
 ## Configuration
