@@ -101,6 +101,17 @@ require("pi").setup({
 if you have unmodified changes. You can use `:e!` (`:help edit!`) to reopen the file
 _discarding_ any unmodified changes.
 
+
+## How it works
+
+- Uses the `folke/snacks` terminal module and launch `pi` process. Nothing fancy.
+
+## Alternative
+
+Consider other options to use Pi agent along with Neovim:
+
+- [pablopunk/pi.nvim](https://github.com/pablopunk/pi.nvim)
+
 ## License
 
 MIT License - see LICENSE file for details.
