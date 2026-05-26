@@ -32,6 +32,10 @@ A minimal Neovim plugin that integrates [Pi Agent](https://github.com/hchosen/pi
 
 ```lua
 use({ "hchosen/pi.nvim", requires = { "folke/snacks.nvim" } })
+
+-- Key bindings
+vim.keymap.set("n", "<leader>ap", "<cmd>PiOpen<CR>", { desc = "Open Pi Agent" })
+vim.keymap.set("v", "<leader>ap", "<cmd>PiSendSel<CR>", { desc = "Send to Pi Agent" })
 ```
 
 ## Configuration
