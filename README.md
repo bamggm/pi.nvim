@@ -43,16 +43,14 @@ Use pi.nvim's `keys` option to set terminal keymaps (scoped to the snacks termin
     { "<leader>ap", "<cmd>PiOpen<CR>", desc = "Open Pi Agent" },
     { "<leader>ap", "<cmd>PiSendSel<CR>", mode = "v", desc = "Send to Pi Agent" },
   },
-  config = function()
-    require("pi").setup({
-      keys = {
-        ["<C-h>"] = "<Cmd>NvimTmuxNavigateLeft<CR>",
-        ["<C-j>"] = "<Cmd>NvimTmuxNavigateDown<CR>",
-        ["<C-k>"] = "<Cmd>NvimTmuxNavigateUp<CR>",
-        ["<C-l>"] = "<Cmd>NvimTmuxNavigateRight<CR>",
-      },
-    })
-  end,
+  opts = {
+    keys = {
+      ["<C-h>"] = "<Cmd>NvimTmuxNavigateLeft<CR>",
+      ["<C-j>"] = "<Cmd>NvimTmuxNavigateDown<CR>",
+      ["<C-k>"] = "<Cmd>NvimTmuxNavigateUp<CR>",
+      ["<C-l>"] = "<Cmd>NvimTmuxNavigateRight<CR>",
+    },
+  },
 }
 ```
 
