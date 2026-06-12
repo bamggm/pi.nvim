@@ -15,6 +15,9 @@ function M.open()
     return
   end
   term = Snacks.terminal.open(config.opts.command, config.opts.terminal)
+  for lhs, rhs in pairs(config.opts.keys) do
+    vim.keymap.set("t", lhs, rhs, { buffer = term.buf })
+  end
 end
 
 function M.close()

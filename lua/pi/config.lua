@@ -1,9 +1,14 @@
 local M = {}
 
 ---Default configuration
+---@class PiConfig
+---@field command string Pi CLI command (default: "pi")
+---@field focus_on_sel boolean Focus terminal after sending selection (default: true)
+---@field keys table<string, function|string> Buffer-local terminal mode keymaps applied only to pi.nvim's terminal window (default: {})
+---@field terminal SnacksTerminalOpts Snacks terminal options
 local defaults = {
   command = "pi",
-  -- snacks terminal argument
+  keys = {},
   terminal = {
     interactive = true,
     win = {

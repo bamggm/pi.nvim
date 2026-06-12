@@ -33,24 +33,25 @@ https://github.com/user-attachments/assets/f499f960-6188-413b-a57f-0271b75556d5
 ```
 
 #### Tmux Users (Optional)
-You can use [`nvim-tmux-navigation`](https://github.com/alexghergh/nvim-tmux-navigation) and set the following bindings to easily navigate between terminal and editor.
+Use pi.nvim's `keys` option to set terminal keymaps (scoped to the snacks terminal window only):
 
 ```lua
-return {
-  "alexghergh/nvim-tmux-navigation",
-  lazy = false,
+{
+  "hchosen/pi.nvim",
+  dependencies = { "folke/snacks.nvim" },
+  keys = {
+    { "<leader>ap", "<cmd>PiOpen<CR>", desc = "Open Pi Agent" },
+    { "<leader>ap", "<cmd>PiSendSel<CR>", mode = "v", desc = "Send to Pi Agent" },
+  },
   config = function()
-    -- terminal
-    vim.keymap.set("t", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-    vim.keymap.set("t", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-    vim.keymap.set("t", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-    vim.keymap.set("t", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-
-    -- tmux
-    vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-    vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-    vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-    vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+    require("pi").setup({
+      keys = {
+        ["<C-h>"] = "<Cmd>NvimTmuxNavigateLeft<CR>",
+        ["<C-j>"] = "<Cmd>NvimTmuxNavigateDown<CR>",
+        ["<C-k>"] = "<Cmd>NvimTmuxNavigateUp<CR>",
+        ["<C-l>"] = "<Cmd>NvimTmuxNavigateRight<CR>",
+      },
+    })
   end,
 }
 ```
@@ -61,6 +62,7 @@ return {
 require("pi").setup({
   command = "pi",           -- Pi CLI command
   focus_on_sel = true,      -- Focus terminal after sending selection
+  keys = {},                -- Buffer-local terminal mode keymaps
 
   -- snacks terminal options
   terminal = {
@@ -81,6 +83,7 @@ require("pi").setup({
 |--------|------|---------|-------------|
 | `command` | string | `"pi"` | Pi CLI command |
 | `focus_on_sel` | boolean | `true` | Focus terminal after sending selection |
+| `keys` | table | `{}` | Buffer-local terminal mode keymaps (e.g. `{ ["<C-h>"] = fn }`) |
 | `terminal` | table | (see above) | snacks terminal options |
 
 ## Usage
