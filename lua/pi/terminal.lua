@@ -27,6 +27,23 @@ function M.close()
   end
 end
 
+function M.send_file()
+  if term == nil or not term:valid() then
+    vim.notify("pi.nvim: no terminal opened", vim.log.levels.ERROR)
+    return
+  end
+
+  local file_name = vim.fn.expand("%:.")
+  local payload = string.format("@%s ", file_name)
+
+  local chan_id = vim.bo[term.buf].channel
+  vim.api.nvim_chan_send(chan_id, payload)
+
+  if config.opts.focus_on_sel then
+    term:focus()
+  end
+end
+
 function M.send_selection()
   if term == nil or not term:valid() then
     vim.notify("pi.nvim: no terminal opened", vim.log.levels.ERROR)

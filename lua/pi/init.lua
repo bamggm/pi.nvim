@@ -12,6 +12,10 @@ vim.api.nvim_create_user_command("PiSendSel", function()
   terminal.send_selection()
 end, { desc = "Pi visual select" })
 
+vim.api.nvim_create_user_command("PiSendFile", function()
+  terminal.send_file()
+end, { desc = "Pi send file" })
+
 function M.setup(opts)
   config.setup(opts)
 end

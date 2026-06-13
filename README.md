@@ -1,11 +1,12 @@
 # pi.nvim
 
-A minimal Neovim plugin that integrates [Pi Agent](https://github.com/hchosen/pi.nvim) as an interactive terminal powered by [snacks.nvim](https://github.com/folke/snacks.nvim).
+A minimal Neovim plugin that integrates [Pi Agent](https://github.com/bamggm/pi.nvim) as an interactive terminal powered by [snacks.nvim](https://github.com/folke/snacks.nvim).
 
 ## Features
 
 - **Interactive Terminal** - Open Pi Agent directly in Neovim
 - **Send Visual Selections** - Select code in visual mode and send it to Pi Agent with file context (e.g., `@lua/pi/init.lua#L1-15`)
+- **Send File Context** - In normal mode, send the current file reference to Pi Agent (e.g., `@lua/pi/init.lua`)
 
 ## Demo
 
@@ -15,7 +16,7 @@ https://github.com/user-attachments/assets/f499f960-6188-413b-a57f-0271b75556d5
 
 - Neovim >= 0.10 (required by snacks.nvim)
 - [snacks.nvim](https://github.com/folke/snacks.nvim)
-- [Pi Agent](https://github.com/hchosen/pi.nvim) CLI (`pi` command)
+- [Pi Agent](https://github.com/bamggm/pi.nvim) CLI (`pi` command)
 
 ## Installation
 
@@ -23,11 +24,12 @@ https://github.com/user-attachments/assets/f499f960-6188-413b-a57f-0271b75556d5
 
 ```lua
 {
-  "hchosen/pi.nvim",
+  "bamggm/pi.nvim",
   dependencies = { "folke/snacks.nvim" },
   keys = {
-    { "<leader>ap", "<cmd>PiOpen<CR>", desc = "Open Pi Agent" },
-    { "<leader>ap", "<cmd>PiSendSel<CR>", mode = "v", desc = "Send to Pi Agent" },
+    { "<leader>ap", "<cmd>PiSendFile<CR>", desc = "Send file to Pi Agent" },
+    { "<leader>ap", "<cmd>PiSendSel<CR>", mode = "v", desc = "Send selection to Pi Agent" },
+    { "<leader>ao", "<cmd>PiOpen<CR>", desc = "Open Pi Agent" },
   },
 }
 ```
@@ -37,11 +39,12 @@ Use pi.nvim's `keys` option to set terminal keymaps (scoped to the snacks termin
 
 ```lua
 {
-  "hchosen/pi.nvim",
+  "bamggm/pi.nvim",
   dependencies = { "folke/snacks.nvim" },
   keys = {
-    { "<leader>ap", "<cmd>PiOpen<CR>", desc = "Open Pi Agent" },
-    { "<leader>ap", "<cmd>PiSendSel<CR>", mode = "v", desc = "Send to Pi Agent" },
+    { "<leader>ap", "<cmd>PiSendFile<CR>", desc = "Send file to Pi Agent" },
+    { "<leader>ap", "<cmd>PiSendSel<CR>", mode = "v", desc = "Send selection to Pi Agent" },
+    { "<leader>ao", "<cmd>PiOpen<CR>", desc = "Open Pi Agent" },
   },
   opts = {
     keys = {
@@ -92,13 +95,20 @@ require("pi").setup({
 |---------|-------------|
 | `:PiOpen` | Open Pi Agent in a terminal window |
 | `:PiSendSel` | Send visual selection to Pi Agent |
+| `:PiSendFile` | Send current file reference to Pi Agent (normal mode) |
 
 ### Sending Code to Pi Agent
 
 1. Select code in visual mode (`v`, `V`, or `Ctrl+v`)
 2. Press `<leader>ap`
-3. The selection is sent with file context
+3. The selection is sent with file and line context
 4. Interact with Pi Agent in the terminal
+
+### Sending File Context to Pi Agent
+
+1. In normal mode, press `<leader>ap`
+2. The current file reference is sent (e.g., `@lua/pi/init.lua`)
+3. Interact with Pi Agent in the terminal
 
 ## FAQ
 
